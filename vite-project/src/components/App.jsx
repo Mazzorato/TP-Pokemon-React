@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Pokemon } from "./Pokemon";
+// import { Pokemon } from "./Pokemon";
 import { PokemonList } from "./PokemonList";
 import { PokemonDetail } from "./PokemonDetail";
 import { SearchBar } from "./SearchBar";
@@ -9,7 +9,20 @@ import "./App.css";
 export function App() {
   const [currentPokemon, setPokemon] = useState(null);
   const [pokemons, setPokemons] = useState([]);
-  const evolution = null;
+  const handleEvolutionClick = (pokedexId) => {
+    fetch(`https://pokebuildapi.fr/api/v1/pokemon/${pokedexId}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Erreur lors de la récupération de l'évolution");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        // 2. On met à jour l'affichage principal
+        setPokemon(data);
+      })
+      .catch((err) => console.error(err));
+  };
 
   useEffect(() => {
     fetch("https://pokebuildapi.fr/api/v1/pokemon/limit/151")
@@ -28,20 +41,27 @@ export function App() {
   return (
     <div className="app">
       {/* Partie gauche */}
-      <div className="left-column">
-        <Pokemon
-          pokemon={currentPokemon?.name}
-          id={currentPokemon?.id}
-          image={currentPokemon?.image}
+      {/* <Pokemon
+        // pokemon={currentPokemon?.name}
+        // id={currentPokemon?.id}
+        // image={currentPokemon?.image}
+        /> */}
+      <PokemonList
+        className="left-column"
+        pokemons={pokemons}
+        onClick={setPokemon}
+      />
+
+      <div className="right-column">
+        {/* Barre de recherche */}
+        <SearchBar onSearch={setPokemon} />
+        <PokemonDetail
+          className="detail"
+          pokemon={currentPokemon}
+          onClickEvolution={handleEvolutionClick}
         />
-        <PokemonList pokemons={pokemons} onClick={setPokemon} />
       </div>
-
       {/* Partie droite */}
-      <PokemonDetail pokemon={currentPokemon} evolution={evolution} />
-
-      {/* Barre de recherche */}
-      <SearchBar onSearch={setPokemon} />
     </div>
   );
 }

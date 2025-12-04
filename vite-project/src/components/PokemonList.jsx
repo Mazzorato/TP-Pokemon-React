@@ -6,7 +6,7 @@ export function PokemonList({ pokemons, onClick }) {
 
  
   return (
-    <div className="pokemon-item-container">
+    <div>
       {pokemons.map((pokemon) => (
         <div key={pokemon.id} className="pokemon-item"
         onClick={() => onClick(pokemon)}>

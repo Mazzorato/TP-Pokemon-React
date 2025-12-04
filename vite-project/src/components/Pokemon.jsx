@@ -1,11 +1,11 @@
  import { useState } from "react";
-import { PokemonList } from "./PokemonList";
-import { PokemonDetail } from "./PokemonDetail"; 
+// import { PokemonList } from "./PokemonList";
+// import { PokemonDetail } from "./PokemonDetail"; 
 
 export function Pokemon({ name, id, image }) {
 
   const [pokemons, setPokemons] = useState([
-    { id: 1, name: "bulbizarre"},
+    
   ]);
 
   
@@ -13,7 +13,7 @@ export function Pokemon({ name, id, image }) {
   return (
     <div>
       <PokemonList pokemons={pokemons} setPokemons={setPokemons}/>
-      <div className="pokemon">
+      <div className="pokemon-test">
         
         <p>{name}</p>
         <p> {id}</p>
