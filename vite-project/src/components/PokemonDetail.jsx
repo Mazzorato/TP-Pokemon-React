@@ -1,4 +1,6 @@
-//  import { useState } from "react";
+import "./PokemonDetail.css";
+
+import { Pokemon } from "./Pokemon";
 
 export function PokemonDetail({ pokemon, onClickEvolution }) {
   //  const [currentPokemon, setCurrentPokemon] = useState([0]);
@@ -11,42 +13,45 @@ export function PokemonDetail({ pokemon, onClickEvolution }) {
   }
   return (
     <div className="Pokemon-detail">
-      <div className="image-detail">
+      {/* Id du Pokémon sélectionné*/}
+      <p className="id"> N° {pokemon.id}</p>
 
       {/* Image du Pokémon */}
-      <img src={pokemon.image} alt={pokemon.name} />
-      </div>
-
+      <img className="image" src={pokemon.image} alt={pokemon.name} />
       {/* Nom du Pokémon */}
-      <p> {pokemon.name}</p>
+      <p className="nom-type"> {pokemon.name}</p>
 
       {/* Types du Pokémon */}
-      <h3>Types</h3>
-      <p> {pokemon.types} </p>
-      {pokemon.apiTypes?.map((type) => (
-        <img key={type.name} src={type.image} alt={type.name} />
-      ))}
+      <h3 className="type-title">Types</h3>
+      {/* <p> {pokemon.types} </p> */}
+      <div className="types-container">
+        {pokemon.apiTypes?.map((type) => (
+          <img
+            class="type-item"
+            key={type.name}
+            src={type.image}
+            alt={type.name}
+          />
+        ))}
+      </div>
 
-      {/*Evolution du Pokémon*/}
-      {pokemon.apiEvolutions && pokemon.apiEvolutions.length > 0 && (
-
-        <div >
+      <div className="evolution-container">
         <h3>Evolution</h3>
-        <div className="evolution-container">
-          {pokemon.apiEvolutions.map((evolution) => (
-            <div
-            key={evolution.pokedexId}
-            className="evolution-item"
-            onClick={() => onClickEvolution?.(evolution.pokedexId)}
-            >
-            <p>{evolution.name}</p>
-            <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${evolution.pokedexId}.png`}
-            alt={evolution.name} />
-            </div>
+        {/*Evolution du Pokémon*/}
+        {pokemon.apiEvolutions &&
+          pokemon.apiEvolutions.length > 0 &&
+          pokemon.apiEvolutions.map((evolution) => (
+            <Pokemon
+              key={evolution.pokedexId}
+              pokemon={{
+                id: evolution.pokedexId,
+                name: evolution.name,
+                image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${evolution.pokedexId}.png`,
+              }}
+              onClick={() => onClickEvolution(evolution.pokedexId)}
+            />
           ))}
-          </div>
-        </div>
-        )}
+      </div>
     </div>
   );
 }

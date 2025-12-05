@@ -1,0 +1,63 @@
+.Pokemon-detail {
+  display: grid;
+  color: white;
+  gap: 10px;
+  margin-bottom: 35px;
+}
+
+
+.image-detail {
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+
+.nom-type {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+
+.types-container {
+  display: flex;
+  gap: 15px; 
+  flex-direction: row-reverse;
+}
+.types-container img {
+  width: 100px;
+}
+h3 {
+  font-size: 25px;
+  
+}
+
+.evolution-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 35rem;
+}
+
+
+/* .Pokemon-detail{
+  .id{
+    flex : 1;
+  }
+  .image{
+    flex : 4;
+
+  }
+  .nom-type{
+    flex : 1;
+  }
+  .type-title{
+    flex : 1;
+  }
+  .types-container{
+    flex : 2;
+  }
+  .evolution-container{
+    flex : 1;
+  }
+
+
+
+} */

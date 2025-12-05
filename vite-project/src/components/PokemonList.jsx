@@ -1,19 +1,10 @@
-//import { useState } from "react";
-
+import { Pokemon } from "./Pokemon";
 
 export function PokemonList({ pokemons, onClick }) {
-
-
- 
   return (
-    <div>
+    <div className="left-column">
       {pokemons.map((pokemon) => (
-        <div key={pokemon.id} className="pokemon-item"
-        onClick={() => onClick(pokemon)}>
-          <p>{pokemon.id}</p>
-          <p>{pokemon.name}</p>
-          <img src={pokemon.image} alt={pokemon.name} />
-        </div>
+        <Pokemon key={pokemon.id} pokemon={pokemon} onClick={onClick} />
       ))}
     </div>
   );

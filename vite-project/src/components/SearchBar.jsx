@@ -35,13 +35,16 @@ export function SearchBar({ onSearch }) {
   },[searchPoke]);
 
   return (
-    <div>
+    <div className="search-bar">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
       <input
+      className="search-input"
         type="text"
         value={searchPoke}
         onChange={handleSearch}
         placeholder="Tape un nom, exemple: Dracaufeu"
         />
+      
     </div>
   );
 }

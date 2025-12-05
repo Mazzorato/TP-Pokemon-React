@@ -47,7 +47,6 @@ export function App() {
         // image={currentPokemon?.image}
         /> */}
       <PokemonList
-        className="left-column"
         pokemons={pokemons}
         onClick={setPokemon}
       />
@@ -55,13 +54,12 @@ export function App() {
       <div className="right-column">
         {/* Barre de recherche */}
         <SearchBar onSearch={setPokemon} />
+        {/* Partie droite */}
         <PokemonDetail
-          className="detail"
           pokemon={currentPokemon}
           onClickEvolution={handleEvolutionClick}
         />
       </div>
-      {/* Partie droite */}
     </div>
   );
 }

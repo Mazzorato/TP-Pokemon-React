@@ -1,24 +1,19 @@
- import { useState } from "react";
+//  import { useState } from "react";
 // import { PokemonList } from "./PokemonList";
-// import { PokemonDetail } from "./PokemonDetail"; 
+// import { PokemonDetail } from "./PokemonDetail";
 
-export function Pokemon({ name, id, image }) {
-
-  const [pokemons, setPokemons] = useState([
-    
-  ]);
-
-  
-
+export function Pokemon({ pokemon, onClick }) {
   return (
-    <div>
-      <PokemonList pokemons={pokemons} setPokemons={setPokemons}/>
-      <div className="pokemon-test">
-        
-        <p>{name}</p>
-        <p> {id}</p>
-        <img src={image} />
+    <div
+      key={pokemon.id}
+      className="pokemon-item"
+      onClick={() => onClick(pokemon)}
+    >
+      <div className="infos">
+        <p>{pokemon.id}</p>
+        <p>{pokemon.name}</p>
       </div>
+      <img src={pokemon.image} alt={pokemon.name} />
     </div>
   );
 }
