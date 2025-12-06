@@ -36,7 +36,7 @@ export function PokemonDetail({ pokemon, onClickEvolution }) {
       </div>
 
       <div className="evolution-container">
-        <h3>Evolution</h3>
+        <h2>Evolution</h2>
         {/*Evolution du Pokémon*/}
         {pokemon.apiEvolutions &&
           pokemon.apiEvolutions.length > 0 &&
